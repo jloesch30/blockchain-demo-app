@@ -35,7 +35,7 @@ const Title = () => {
             accusantium dignissimos!
           </p>
         </div>
-        <div className="flex justify-center items-center my-20 text-2xl font-bold text-primaryFont font-mono">
+        <div className="flex justify-center items-center my-5 md:my-10 text-2xl font-bold text-primaryFont font-mono">
           <p>Technologies Involved</p>
         </div>
         <div>
