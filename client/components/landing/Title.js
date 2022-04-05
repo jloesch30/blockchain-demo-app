@@ -16,8 +16,8 @@ const Title = () => {
           </h1>
         </div>
       </div>
-      <div className="mt-40 mx-10 grid gap-5 grid-cols-2">
-        <div className="col-span-2">
+      <div className="mt-40 mx-10 grid gap-5 grid-cols-1 md:grid-cols-2">
+        <div className="md:col-span-2">
           <h2 className="text-2xl font-mono font-bold text-primaryFont">
             How does it work?
           </h2>
