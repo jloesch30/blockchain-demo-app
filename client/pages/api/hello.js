@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     name: "test",
     location: "test",
   };
+
   try {
     const { id } = await db.collection("users").add({
       ...data,
