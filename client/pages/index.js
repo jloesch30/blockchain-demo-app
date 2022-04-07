@@ -8,6 +8,11 @@ import SignOutButton from "../components/auth/SignOutButton";
 export default function Index() {
   const { data: session } = useSession();
   const router = useRouter();
+
+  if (session) {
+    console.log(session);
+  }
+
   const loginOrRedirect = () => {
     if (session) {
       router.push("/demo");
