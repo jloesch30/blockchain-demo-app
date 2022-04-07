@@ -3,10 +3,7 @@ import Image from "next/image";
 import React from "react";
 import placeholderJpeg from "../../public/assets/placeholder.jpeg";
 
-const Title = () => {
-  const linkToDemo = () => {
-    alert("I dont go anywhere yet ;)");
-  };
+const Body = ({ linkOutOfHome }) => {
   return (
     <>
       <div className="bg-primaryFont fixed w-full top-0">
@@ -46,7 +43,11 @@ const Title = () => {
         <h1 className="text-2xl font-mono text-primaryFont font-bold underline-offset-8 underline">
           Try the Demo
         </h1>
-        <Button onClick={linkToDemo} variant="contained">
+        <Button
+          className="bg-blue-400"
+          onClick={linkOutOfHome}
+          variant="contained"
+        >
           Follow me!
         </Button>
       </div>
@@ -54,4 +55,4 @@ const Title = () => {
   );
 };
 
-export default Title;
+export default Body;
