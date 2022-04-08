@@ -1,11 +1,23 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 const Nav = ({ renderPageValue, setRenderPageValue }) => {
+  const router = useRouter();
+  const redirectToLanding = () => {
+    router.push("/");
+  };
   return (
-    <div className="fixed top-0 w-full bg-primaryFont py-10">
+    <div className="fixed top-0 w-full bg-primaryFont py-10 shadow-lg">
       <ul className="grid grid-cols-4 gap-1 place-items-center">
-        <li>
-          <h1 className="text-white text-2xl md:text-3xl font-extrabold">
+        <li onClick={redirectToLanding}>
+          <h1
+            className="
+            text-white 
+            text-2xl 
+            md:text-3xl 
+            font-extrabold 
+            cursor-pointer"
+          >
             BlockedIn
           </h1>
         </li>
