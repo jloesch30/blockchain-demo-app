@@ -1,9 +1,9 @@
-import BottomNavigation from "../../components/nav/BottomNavigation";
+import SimpleBottomNavigation from "../components/nav/BottomNavigation";
 import React, { useState } from "react";
-import Nav from "../../components/nav/Nav";
-import useWindowSize from "../../hooks/useWindowSize";
+import Nav from "../components/nav/Nav";
+import useWindowSize from "../hooks/useWindowSize";
 
-const index = () => {
+const Demo = () => {
   const windowSize = useWindowSize();
   const [renderPageValue, setRenderPageValue] = useState(-1);
   return (
@@ -19,13 +19,13 @@ const index = () => {
         {renderPageValue == 0 && <p>Hello there</p>}
       </div>
       {windowSize.width < 600 && (
-        <BottomNavigation
+        <SimpleBottomNavigation
           renderPageValue={renderPageValue}
           setRenderPageValue={setRenderPageValue}
-        ></BottomNavigation>
+        ></SimpleBottomNavigation>
       )}
     </>
   );
 };
 
-export default index;
+export default Demo;
