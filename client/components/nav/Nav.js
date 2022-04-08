@@ -1,6 +1,6 @@
 import React from "react";
 
-const Nav = () => {
+const Nav = ({ renderPageValue, setRenderPageValue }) => {
   return (
     <div className="fixed top-0 w-full bg-primaryFont py-10">
       <ul className="grid grid-cols-4 gap-1 place-items-center">
@@ -11,7 +11,9 @@ const Nav = () => {
         </li>
         <li></li>
         <li
-          className="
+          onClick={() => setRenderPageValue(0)}
+          className={`
+          ${renderPageValue == 0 && "underline"}
           py-2
           px-2
           transition-all 
@@ -21,12 +23,14 @@ const Nav = () => {
           font-bold
           text-white 
           cursor-pointer
-          text-lg"
+          text-lg`}
         >
           Home
         </li>
         <li
-          className="
+          onClick={() => setRenderPageValue(1)}
+          className={`
+          ${renderPageValue == 1 && "underline"}
           py-2
           px-2
           transition-all 
@@ -36,7 +40,8 @@ const Nav = () => {
           font-bold
           text-white 
           cursor-pointer
-          text-lg"
+          text-lg
+          `}
         >
           Contract Code
         </li>
