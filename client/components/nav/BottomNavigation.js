@@ -13,7 +13,7 @@ export default function SimpleBottomNavigation({
   const [value, setValue] = React.useState(renderPageValue);
 
   return (
-    <Box sx={{ width: "full" }}>
+    <Box sx={{ width: "full" }} className="fixed bottom-0 w-full">
       <BottomNavigation
         showLabels
         value={value}

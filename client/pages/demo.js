@@ -14,10 +14,7 @@ const Demo = () => {
           setRenderPageValue={setRenderPageValue}
         ></Nav>
       )}
-      <div>
-        <div>{/*display profiles to view*/}</div>
-        {renderPageValue == 0 && <p>Hello there</p>}
-      </div>
+      <div></div>
       {windowSize.width < 600 && (
         <SimpleBottomNavigation
           renderPageValue={renderPageValue}
