@@ -22,8 +22,8 @@ export default function SimpleBottomNavigation({
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Contract" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Profiles" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Home" icon={<FavoriteIcon />} />
+        <BottomNavigationAction label="Contract" icon={<LocationOnIcon />} />
       </BottomNavigation>
     </Box>
   );
