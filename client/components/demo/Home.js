@@ -1,3 +1,5 @@
+import UserTile from "./UserTile";
+
 const Home = () => {
   return (
     <div className="mt-36">

@@ -2,8 +2,9 @@
 - Create a new user for the demo application
 */
 
-import db from "../../utils/db";
-import { checkAuth } from "../../utils/session";
+import db from "../../../utils/db";
+import { checkAuth } from "../../../utils/session";
+import multiparty from "multiparty";
 
 export default async function handler(req, res) {
   if (!(await checkAuth(req))) {
@@ -11,20 +12,27 @@ export default async function handler(req, res) {
     return;
   }
 
-  const data = {
-    name: "test",
-    location: "test",
-  };
+  const form = new multiparty.Form();
 
-  try {
-    const { id } = await db.collection("users").add({
-      ...data,
-      created: new Date().toISOString(),
-    });
-    res.status(200).json({ id: id });
-    return;
-  } catch (e) {
-    console.error("Error adding the document", e);
-    res.status(200).json({ message: "Something went wrong" });
-  }
+  form.parse(req, async (err, fields, files) => {
+    console.log(fields);
+
+    try {
+      const { id } = await db.collection("users").add({
+        ...fields,
+        created: new Date().toISOString(),
+      });
+      res.status(200).json({ id: id });
+      return;
+    } catch (e) {
+      console.error("Error adding the document", e);
+      res.status(200).json({ message: "Something went wrong" });
+    }
+  });
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
