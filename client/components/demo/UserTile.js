@@ -4,6 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Router, { useRouter } from "next/router";
 
 const bull = (
   <Box
@@ -14,7 +15,12 @@ const bull = (
   </Box>
 );
 
-const UserTile = ({ lineItemDescription, lineItemName, name }) => {
+const UserTile = ({ lineItemDescription, lineItemName, name, bio, userId }) => {
+  const router = useRouter();
+
+  const cardClickHandler = () => {
+    router.push(`/user/${userId}`);
+  };
   return (
     <Card sx={{ minWidth: 275, bgcolor: "#EFFBFF" }}>
       <CardContent>
@@ -24,13 +30,15 @@ const UserTile = ({ lineItemDescription, lineItemName, name }) => {
         {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
         </Typography> */}
         <Typography variant="body2">
-          Description
+          <span className="font-light font-sans">Bio</span>
           <br />
-          {'"a benevolent smile"'}
+          {`"${bio}"`}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">View Profile</Button>
+        <Button onClick={cardClickHandler} size="small">
+          View Profile
+        </Button>
       </CardActions>
     </Card>
   );

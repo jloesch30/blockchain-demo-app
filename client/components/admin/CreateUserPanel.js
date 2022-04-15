@@ -63,6 +63,16 @@ const CreateUserPanel = () => {
               name="name"
               id="name"
             />
+            <label className="text-white font-semibold" htmlFor="bio">
+              Bio
+            </label>
+            <textarea
+              required={true}
+              className="bg-slate-300 rounded-md px-4"
+              type="text"
+              name="bio"
+              id="bio"
+            />
           </div>
           <div className="border-b-white border-2 mx-2 my-4 border-dashed"></div>
           {[...Array(numberOfLineItems)].map((e, i) => (

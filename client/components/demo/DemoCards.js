@@ -21,6 +21,8 @@ const DemoCards = ({ users }) => {
                 lineItemDescription={value.lineItemDescription}
                 lineItemName={value.lineItemName}
                 name={value.name}
+                bio={value.bio}
+                userId={value.id}
               ></UserTile>
             );
           })}

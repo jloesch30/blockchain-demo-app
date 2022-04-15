@@ -12,7 +12,16 @@ const Demo = ({ users }) => {
         setRenderPageValue={setRenderPageValue}
       ></Nav>
       {/* Content of the page here */}
-      <DemoCards users={users}></DemoCards>
+      {users.length > 0 && <DemoCards users={users}></DemoCards>}
+      {users.length <= 0 && (
+        <div className="mt-48 flex flex-col items-center justify-center">
+          <p className="font-mono font-bold">
+            No users, please use the admin panel to add some
+            <br />
+            <p className="text-center">/admin</p>
+          </p>
+        </div>
+      )}
     </>
   );
 };
@@ -27,6 +36,7 @@ export async function getServerSideProps(context) {
   let data = [];
   snapshot.forEach((doc) => {
     data.push({
+      id: doc.id,
       ...doc.data(),
     });
   });
