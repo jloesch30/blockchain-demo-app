@@ -11,6 +11,15 @@ const Nav = ({ renderPageValue, setRenderPageValue }) => {
   const redirectToLanding = () => {
     router.push("/");
   };
+
+  const handleHomeClick = () => {
+    router.push("/demo");
+  };
+
+  const handleContractCodeClick = () => {
+    router.push("/contractCode");
+  };
+
   return (
     <>
       {windowSize.width > 580 && (
@@ -30,7 +39,9 @@ const Nav = ({ renderPageValue, setRenderPageValue }) => {
             </li>
             <li></li>
             <li
-              onClick={() => setRenderPageValue(0)}
+              onClick={() => {
+                handleHomeClick();
+              }}
               className={`
           ${renderPageValue == 0 && "underline"}
           py-2
@@ -47,7 +58,9 @@ const Nav = ({ renderPageValue, setRenderPageValue }) => {
               Home
             </li>
             <li
-              onClick={() => setRenderPageValue(1)}
+              onClick={() => {
+                handleContractCodeClick();
+              }}
               className={`
           ${renderPageValue == 1 && "underline"}
           py-2

@@ -1,12 +1,9 @@
-import SimpleBottomNavigation from "../components/nav/BottomNavigation";
 import React, { useState } from "react";
 import Nav from "../components/nav/Nav";
-import useWindowSize from "../hooks/useWindowSize";
-import Header from "../components/nav/Header";
-import Home from "../components/demo/Home";
+import DemoCards from "../components/demo/DemoCards";
+import db from "../utils/db";
 
-const Demo = () => {
-  const windowSize = useWindowSize();
+const Demo = ({ users }) => {
   const [renderPageValue, setRenderPageValue] = useState(0);
   return (
     <>
@@ -15,9 +12,30 @@ const Demo = () => {
         setRenderPageValue={setRenderPageValue}
       ></Nav>
       {/* Content of the page here */}
-      <Home></Home>
+      <DemoCards users={users}></DemoCards>
     </>
   );
 };
 
 export default Demo;
+
+export async function getServerSideProps(context) {
+  // logic to get users
+  const usersRef = db.collection("users");
+  const snapshot = await usersRef.get();
+
+  let data = [];
+  snapshot.forEach((doc) => {
+    data.push({
+      ...doc.data(),
+    });
+  });
+
+  console.log(data);
+
+  return {
+    props: {
+      users: data,
+    },
+  };
+}
