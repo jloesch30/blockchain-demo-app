@@ -18,7 +18,7 @@ const User = ({ data }) => {
           <h1>Name: {data.name}</h1>
           <p>{data.bio}</p>
           {data.lineItemName.map((value, index) => {
-            return <div>Item: {value}</div>;
+            return <div key={index}>Item: {value}</div>;
           })}
         </div>
       </div>
