@@ -22,7 +22,7 @@ const Nav = ({ renderPageValue, setRenderPageValue }) => {
 
   return (
     <>
-      {windowSize.width > 580 && (
+      {windowSize.width > 768 && (
         <div className="fixed top-0 w-full bg-primaryFont py-10 shadow-lg">
           <ul className="grid grid-cols-4 gap-1 place-items-center">
             <li onClick={redirectToLanding}>
@@ -80,7 +80,7 @@ const Nav = ({ renderPageValue, setRenderPageValue }) => {
           </ul>
         </div>
       )}
-      {windowSize.width < 580 && (
+      {windowSize.width < 768 && (
         <>
           <Header></Header>
           <SimpleBottomNavigation
