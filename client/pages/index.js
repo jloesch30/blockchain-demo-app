@@ -4,10 +4,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Body from "../components/landing/Body";
 import SignOutButton from "../components/auth/SignOutButton";
+import useWeb3 from "../hooks/useWeb3";
 
 export default function Index() {
   const { data: session } = useSession();
   const router = useRouter();
+  const { web3, address } = useWeb3();
 
   if (session) {
     console.log(session);
