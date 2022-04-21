@@ -34,3 +34,9 @@ Testing interaction with the deployed - apparently this is the main way that dev
 ```
 npm run test 
 ```
+
+# Getting More Test Eth 
+
+Link: https://faucets.chain.link/rinkeby
+<img width="489" alt="image" src="https://user-images.githubusercontent.com/45672828/164566914-67b1e281-0c38-4ad1-9b74-2bf002d522f0.png">
+
