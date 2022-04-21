@@ -14,6 +14,11 @@ RINKEBY=https://rinkeby.infura.io/v3/0ef2fcd5e9bf41619f1e9d35f15c14bb
 NUM={{your wallet security key - e.g. dog cat wolf mom ... }}
 ```
 
+You can get your security key through the settings page in your metamask as below: 
+
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/45672828/164567221-3d057d51-ce64-443b-a426-f5c24f267762.png">
+
+
 **3. Compile**
 
 Compiles the code and creates the ABI (interface) and the bytecode. 
