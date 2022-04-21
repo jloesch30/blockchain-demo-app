@@ -1,4 +1,4 @@
-# blockchain_lottery
+# Getting Started
 Playing around with Solidity to build a lottery system. 
 
 **1. Dependencies Install**
