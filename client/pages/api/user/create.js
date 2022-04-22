@@ -15,13 +15,46 @@ export default async function handler(req, res) {
   const form = new multiparty.Form();
 
   form.parse(req, async (err, fields, files) => {
-    console.log(fields);
+    const asList = Object.entries(fields);
+
+    // filter out the select element returned from the client
+    const filteredData = asList.filter(
+      ([key, value]) => key !== "select-input"
+    );
+    // convert the data back into json format
+    const data = Object.fromEntries(filteredData);
+    console.log(data);
 
     try {
       const { id } = await db.collection("users").add({
-        ...fields,
+        name: data.name[0],
+        bio: data.bio[0],
         created: new Date().toISOString(),
       });
+
+      // add the resume items as documents of the subcollection
+      data.lineItemName.forEach(async (value, index) => {
+        const snap = await db
+          .collection("users")
+          .doc(id)
+          .collection("resume")
+          .add({
+            name: value,
+            description: data.lineItemDescription[index],
+          });
+      });
+
+      data.skillItemName.forEach(async (value, index) => {
+        const snap = await db
+          .collection("users")
+          .doc(id)
+          .collection("skills")
+          .add({
+            name: value,
+            description: data.skillItemDescription[index],
+          });
+      });
+
       res.status(200).json({ id: id });
       return;
     } catch (e) {

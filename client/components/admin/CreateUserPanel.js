@@ -9,11 +9,12 @@ const CreateUserPanel = () => {
 
   const createNewUser = async (event) => {
     event.preventDefault();
-    console.log(event.target);
+    // console.log(event.target);
     const formData = new FormData(event.target);
     for (let [key, val] of formData.entries()) {
       console.log(key, val);
     }
+
     const config = {
       headers: { "content-type": "multipart/form-data" },
       onUploadProgress: (event) => {
@@ -23,6 +24,7 @@ const CreateUserPanel = () => {
         );
       },
     };
+
     // submit the form data to the route
     const res = await axios.post("/api/user/create", formData, config);
   };

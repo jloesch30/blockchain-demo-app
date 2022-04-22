@@ -14,7 +14,18 @@ const User = ({ data }) => {
     <>
       <Nav></Nav>
       <div className="h-32 md:h-48 bg-gradient-to-r from-sky-500 to-indigo-500 grid grid-cols-3">
-        <h1 className="mx-4 whitespace-nowrap overflow-visible text-white text-2xl text-left self-end font-bold mb-2">
+        <h1
+          className="
+          mx-4 
+          whitespace-nowrap 
+          overflow-visible 
+          text-white 
+          text-2xl 
+          text-left 
+          self-end 
+          font-bold 
+          mb-2"
+        >
           {data.name}
         </h1>
       </div>
