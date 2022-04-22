@@ -9,7 +9,6 @@ const CreateUserPanel = () => {
 
   const createNewUser = async (event) => {
     event.preventDefault();
-    // console.log(event.target);
     const formData = new FormData(event.target);
     for (let [key, val] of formData.entries()) {
       console.log(key, val);

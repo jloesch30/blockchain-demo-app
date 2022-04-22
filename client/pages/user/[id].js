@@ -1,14 +1,15 @@
 import Nav from "../../components/nav/Nav";
 import { useRouter } from "next/router";
 import db from "../../utils/db";
-import useLineItem from "../../hooks/useLineItem";
+// import useLineItem from "../../hooks/useLineItem";
+import useExtractData from "../../hooks/useExtractData";
 import UserItemTile from "../../components/demo/UserItemTile";
 
 //TODO: finish user card
 const User = ({ data }) => {
   const router = useRouter();
   const { id } = router.query;
-  const lineItemData = useLineItem(data);
+  const { resumeItems, skillItems } = useExtractData(data);
 
   return (
     <>
@@ -32,8 +33,9 @@ const User = ({ data }) => {
       <div className="mt-4 grid gap-6 grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-xl font-mono font-bold">Skills</h1>
-          {lineItemData &&
-            lineItemData.map((value, index) => {
+          {/* TODO: resume items */}
+          {resumeItems &&
+            resumeItems.map((value, index) => {
               return (
                 <UserItemTile
                   key={index}
@@ -46,8 +48,9 @@ const User = ({ data }) => {
         </div>
         <div className="flex justify-center items-center flex-col">
           <h1 className="text-xl font-mono font-bold">Resume Items</h1>
-          {lineItemData &&
-            lineItemData.map((value, index) => {
+          {/* TODO: skillItems items */}
+          {skillItems &&
+            skillItems.map((value, index) => {
               return (
                 <UserItemTile
                   key={index}

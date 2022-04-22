@@ -23,7 +23,6 @@ export default async function handler(req, res) {
     );
     // convert the data back into json format
     const data = Object.fromEntries(filteredData);
-    console.log(data);
 
     try {
       const { id } = await db.collection("users").add({

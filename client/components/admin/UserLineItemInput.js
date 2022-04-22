@@ -7,7 +7,6 @@ const UserLineItemInput = ({ lineItemId }) => {
     setInputType(() => e.target.value);
   };
 
-  console.log(inputType);
   return (
     <div className="flex flex-col mx-auto">
       <select
