@@ -25,40 +25,47 @@ export default async function handler(req, res) {
     const data = Object.fromEntries(filteredData);
 
     try {
+      console.log("inside of try block");
       const { id } = await db.collection("users").add({
         name: data.name[0],
         bio: data.bio[0],
         created: new Date().toISOString(),
       });
 
-      // add the resume items as documents of the subcollection
-      data.lineItemName.forEach(async (value, index) => {
-        const snap = await db
-          .collection("users")
-          .doc(id)
-          .collection("resume")
-          .add({
-            name: value,
-            description: data.lineItemDescription[index],
-          });
-      });
+      // add the resume items as documents of the sub-collection
 
-      data.skillItemName.forEach(async (value, index) => {
-        const snap = await db
-          .collection("users")
-          .doc(id)
-          .collection("skills")
-          .add({
-            name: value,
-            description: data.skillItemDescription[index],
-          });
-      });
+      if (data?.lineItemName) {
+        data.lineItemName.forEach(async (value, index) => {
+          const snap = await db
+            .collection("users")
+            .doc(id)
+            .collection("resume")
+            .add({
+              name: value,
+              description: data.lineItemDescription[index],
+            });
+        });
+      }
 
-      res.status(200).json({ id: id });
-      return;
+      if (data?.skillItemName) {
+        data.skillItemName.forEach(async (value, index) => {
+          const snap = await db
+            .collection("users")
+            .doc(id)
+            .collection("skills")
+            .add({
+              name: value,
+              description: data.skillItemDescription[index],
+            });
+        });
+      }
+
+      res.json({ id: id });
+      res.status(200).end();
     } catch (e) {
       console.error("Error adding the document", e);
-      res.status(200).json({ message: "Something went wrong" });
+      res.json({ message: "Something went wrong" });
+      res.status(500).end();
     }
   });
 }

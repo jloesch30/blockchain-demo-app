@@ -2,16 +2,21 @@ import Nav from "../../components/nav/Nav";
 import { useRouter } from "next/router";
 import db from "../../utils/db";
 import UserItemTile from "../../components/demo/UserItemTile";
+import { useState } from "react";
 
 //TODO: finish user card
 const User = ({ data }) => {
+  const [renderPageValue, setRenderPageValue] = useState(-1);
   const router = useRouter();
   const { id } = router.query;
   const { resumeItems, skillItems, userItems } = data;
 
   return (
     <>
-      <Nav></Nav>
+      <Nav
+        renderPageValue={renderPageValue}
+        setRenderPageValue={setRenderPageValue}
+      ></Nav>
       <div className="h-32 md:h-48 bg-gradient-to-r from-sky-500 to-indigo-500 grid grid-cols-3">
         <h1
           className="
@@ -32,8 +37,8 @@ const User = ({ data }) => {
         <div className="flex flex-col items-center">
           <h1 className="text-xl font-mono font-bold">Skills</h1>
           {/* TODO: resume items */}
-          {resumeItems &&
-            resumeItems.map((value, index) => {
+          {skillItems &&
+            skillItems.map((value, index) => {
               return (
                 <UserItemTile
                   key={index}
@@ -47,8 +52,8 @@ const User = ({ data }) => {
         <div className="flex items-center flex-col">
           <h1 className="text-xl font-mono font-bold">Resume Items</h1>
           {/* TODO: skillItems items */}
-          {skillItems &&
-            skillItems.map((value, index) => {
+          {resumeItems &&
+            resumeItems.map((value, index) => {
               return (
                 <UserItemTile
                   key={index}
@@ -86,8 +91,8 @@ export async function getServerSideProps(context) {
   });
 
   const data = {
-    resumeItems: skillItems,
-    skillItems: resumeItems,
+    resumeItems: resumeItems,
+    skillItems: skillItems,
     userItems: userSnap.data(),
   };
 
