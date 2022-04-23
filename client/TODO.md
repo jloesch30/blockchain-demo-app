@@ -1,0 +1,1 @@
+- [ ] display each resume and skill item in on the unique user page

@@ -6,7 +6,6 @@ export default function useLineItem(info) {
     const lineItemData = info.lineItemName.map((value, index) => {
       return [value, info.lineItemDescription[index]];
     });
-    console.log(lineItemData);
     setData(lineItemData);
     return () => setData([]);
   }, []);

@@ -84,6 +84,8 @@ const Nav = ({ renderPageValue, setRenderPageValue }) => {
         <>
           <Header></Header>
           <SimpleBottomNavigation
+            handleContractCodeClick={handleContractCodeClick}
+            handleHomeClick={handleHomeClick}
             renderPageValue={renderPageValue}
             setRenderPageValue={setRenderPageValue}
           ></SimpleBottomNavigation>

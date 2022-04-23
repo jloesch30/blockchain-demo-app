@@ -1,10 +1,41 @@
 import "../styles/globals.css";
 import { SessionProvider } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Loading from "../components/loading/Loading";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const start = () => {
+      console.log("start");
+      setLoading(true);
+    };
+    const end = () => {
+      console.log("finished");
+      setLoading(false);
+    };
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
+    return () => {
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
+    };
+  }, []);
+
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      {loading ? (
+        <div className="flex flex-col justify-center items-center">
+          <Loading type={"bars"} color={"#0274B3"}></Loading>
+        </div>
+      ) : (
+        <Component {...pageProps} />
+      )}
     </SessionProvider>
   );
 }
