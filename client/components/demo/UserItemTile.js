@@ -1,6 +1,6 @@
 const UserItemTile = ({ name, description, validation }) => {
   return (
-    <div className="bg-slate-400 py-3 px-4 rounded-lg my-2 shadow-md">
+    <div className="bg-slate-400 py-3 px-4 rounded-lg my-2 shadow-md mx-3">
       <ul>
         <li>
           <h1>

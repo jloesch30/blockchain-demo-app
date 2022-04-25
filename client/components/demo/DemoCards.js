@@ -13,7 +13,7 @@ const DemoCards = ({ users }) => {
         </p>
       </div>
       <div className="my-10">
-        <div className="grid gap-4 place-content-center">
+        <div className="grid gap-4 place-content-center pb-11">
           {users.map((value, index) => {
             return (
               <UserTile
