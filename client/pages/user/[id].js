@@ -33,33 +33,37 @@ const User = ({ data }) => {
         </h1>
       </div>
       {!resumeItems && !skillItems && <h1>No items in profile</h1>}
-      <div className="flex flex-col justify-center items-center mx-4">
-        <div className="bg-slate-300 w-full max-w-6xl rounded-md shadow-lg mt-5 py-10">
-          <h2 className="text-white font-sans text-xl font-semibold text-center">
+      <div className="mx-4 grid grid-cols-1 place-items-center">
+        <div className="bg-slate-300 w-full max-w-6xl rounded-md shadow-lg mt-5 py-10 grid grid-cols-1 md:grid-cols-2 place-items-center">
+          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-1">
             Resume Items
           </h2>
-          {skillItems &&
-            skillItems.map((value, index) => {
-              return (
-                <UserItemTile
-                  description={value.description}
-                  name={value.name}
-                ></UserItemTile>
-              );
-            })}
-          <div className="border-b-white border-2 mx-2 my-4 border-dashed"></div>
-          <h2 className="text-white font-sans text-xl font-semibold text-center">
+          <div className="md:order-3 grid grid-cols-1 place-items-center w-full">
+            {skillItems &&
+              skillItems.map((value, index) => {
+                return (
+                  <UserItemTile
+                    description={value.description}
+                    name={value.name}
+                  ></UserItemTile>
+                );
+              })}
+          </div>
+          <div className="border-b-white border-2 w-full mx-2 my-4 border-dashed md:hidden"></div>
+          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-2">
             Skills
           </h2>
-          {resumeItems &&
-            resumeItems.map((value, index) => {
-              return (
-                <UserItemTile
-                  description={value.description}
-                  name={value.name}
-                ></UserItemTile>
-              );
-            })}
+          <div className="md:order-4 grid grid-cols-1 place-items-center w-full">
+            {resumeItems &&
+              resumeItems.map((value, index) => {
+                return (
+                  <UserItemTile
+                    description={value.description}
+                    name={value.name}
+                  ></UserItemTile>
+                );
+              })}
+          </div>
         </div>
       </div>
       <div className="mt-4 grid gap-6 grid-cols-1 md:grid-cols-2"></div>
