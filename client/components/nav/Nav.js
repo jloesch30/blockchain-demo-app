@@ -1,12 +1,25 @@
 import { useRouter } from "next/router";
 import Header from "./Header";
 import SimpleBottomNavigation from "./BottomNavigation";
-import React from "react";
+import React, { useEffect } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
+import { getSession } from "next-auth/react";
+import axios from "axios";
 
 const Nav = ({ renderPageValue, setRenderPageValue }) => {
   const router = useRouter();
   const windowSize = useWindowSize();
+
+  //TODO: finish use Effect
+  useEffect(() => {
+    const session = getSession();
+    const fetchWhiteList = async () => {
+      const data = await axios.get("/api/admin/whitelist");
+    };
+    fetchWhiteList().catch((e) => {
+      console.log(e);
+    });
+  }, []);
 
   const redirectToLanding = () => {
     router.push("/");
