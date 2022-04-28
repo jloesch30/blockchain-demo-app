@@ -8,9 +8,7 @@ export function AppWrapper({ children }) {
   let sharedState = {};
 
   useEffect(() => {
-    const getWhiteList = async () => {
-      const check = await 
-    }
+    const getWhiteList = async () => {};
   }, [sharedState.admin]);
 
   return (
