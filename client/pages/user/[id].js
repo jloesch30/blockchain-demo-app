@@ -43,6 +43,7 @@ const User = ({ data }) => {
               skillItems.map((value, index) => {
                 return (
                   <UserItemTile
+                    key={index}
                     description={value.description}
                     name={value.name}
                   ></UserItemTile>
@@ -58,6 +59,7 @@ const User = ({ data }) => {
               resumeItems.map((value, index) => {
                 return (
                   <UserItemTile
+                    key={index}
                     description={value.description}
                     name={value.name}
                   ></UserItemTile>
