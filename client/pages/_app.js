@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Loading from "../components/loading/Loading";
+import { AppWrapper, AuthContextProvider } from "../store/auth-context";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [loading, setLoading] = useState(false);
@@ -28,15 +29,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   }, []);
 
   return (
-    <SessionProvider session={session}>
-      {loading ? (
-        <div className="flex flex-col justify-center items-center">
-          <Loading type={"bars"} color={"#0274B3"}></Loading>
-        </div>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </SessionProvider>
+    <AuthContextProvider>
+      <SessionProvider session={session}>
+        {loading ? (
+          <div className="flex flex-col justify-center items-center">
+            <Loading type={"bars"} color={"#0274B3"}></Loading>
+          </div>
+        ) : (
+          <>
+            <Component {...pageProps} />
+          </>
+        )}
+      </SessionProvider>
+    </AuthContextProvider>
   );
 }
 

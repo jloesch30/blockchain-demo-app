@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import axios from "axios";
+import db from "../../../utils/db";
 
 export default NextAuth({
   providers: [
@@ -10,7 +12,8 @@ export default NextAuth({
   ],
   callbacks: {
     // async signIn({ user, account, profile, email, credentials }) {
-    //   return "/demo";
+    //   console.log(credentials);
+    //   return true;
     // },
   },
 });

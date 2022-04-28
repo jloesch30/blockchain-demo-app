@@ -4,7 +4,6 @@ import db from "../../utils/db";
 import UserItemTile from "../../components/demo/UserItemTile";
 import { useState } from "react";
 
-//TODO: finish user card
 const User = ({ data }) => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
   const router = useRouter();
@@ -25,7 +24,7 @@ const User = ({ data }) => {
           overflow-visible 
           text-white 
           text-2xl 
-          text-left 
+          text-left
           self-end 
           font-bold 
           mb-2"
@@ -33,38 +32,43 @@ const User = ({ data }) => {
           {userItems.name}
         </h1>
       </div>
-      <div className="mt-4 grid gap-6 grid-cols-1 md:grid-cols-2">
-        <div className="flex flex-col items-center">
-          <h1 className="text-xl font-mono font-bold">Skills</h1>
-          {/* TODO: resume items */}
-          {skillItems &&
-            skillItems.map((value, index) => {
-              return (
-                <UserItemTile
-                  key={index}
-                  name={value.name}
-                  description={value.description}
-                  validation={null}
-                ></UserItemTile>
-              );
-            })}
-        </div>
-        <div className="flex items-center flex-col">
-          <h1 className="text-xl font-mono font-bold">Resume Items</h1>
-          {/* TODO: skillItems items */}
-          {resumeItems &&
-            resumeItems.map((value, index) => {
-              return (
-                <UserItemTile
-                  key={index}
-                  name={value.name}
-                  description={value.description}
-                  validation={null}
-                ></UserItemTile>
-              );
-            })}
+      {!resumeItems && !skillItems && <h1>No items in profile</h1>}
+      <div className="mx-4 grid grid-cols-1 place-items-center">
+        <div className="bg-slate-300 w-full max-w-6xl rounded-md shadow-lg mt-5 py-10 grid grid-cols-1 md:grid-cols-2 place-items-center">
+          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-1">
+            Resume Items
+          </h2>
+          <div className="md:order-3 grid grid-cols-1 place-items-center w-full">
+            {skillItems &&
+              skillItems.map((value, index) => {
+                return (
+                  <UserItemTile
+                    key={index}
+                    description={value.description}
+                    name={value.name}
+                  ></UserItemTile>
+                );
+              })}
+          </div>
+          <div className="border-b-white border-2 w-full mx-2 my-4 border-dashed md:hidden"></div>
+          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-2">
+            Skills
+          </h2>
+          <div className="md:order-4 grid grid-cols-1 place-items-center w-full">
+            {resumeItems &&
+              resumeItems.map((value, index) => {
+                return (
+                  <UserItemTile
+                    key={index}
+                    description={value.description}
+                    name={value.name}
+                  ></UserItemTile>
+                );
+              })}
+          </div>
         </div>
       </div>
+      <div className="mt-4 grid gap-6 grid-cols-1 md:grid-cols-2"></div>
     </>
   );
 };

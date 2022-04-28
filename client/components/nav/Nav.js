@@ -1,12 +1,14 @@
 import { useRouter } from "next/router";
 import Header from "./Header";
 import SimpleBottomNavigation from "./BottomNavigation";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
+import AuthContext from "../../store/auth-context";
 
 const Nav = ({ renderPageValue, setRenderPageValue }) => {
   const router = useRouter();
   const windowSize = useWindowSize();
+  const ctx = useContext(AuthContext);
 
   const redirectToLanding = () => {
     router.push("/");
