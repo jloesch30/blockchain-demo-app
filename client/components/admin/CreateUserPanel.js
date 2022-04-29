@@ -6,6 +6,8 @@ import axios from "axios";
 const CreateUserPanel = () => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
   const [numberOfLineItems, setNumberOfLineItems] = useState(0);
+  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
 
   const createNewUser = async (event) => {
     event.preventDefault();
@@ -25,7 +27,16 @@ const CreateUserPanel = () => {
     };
 
     // submit the form data to the route
-    const res = await axios.post("/api/user/create", formData, config);
+    await axios
+      .post("/api/user/create", formData, config)
+      .then((res) => {
+        setNumberOfLineItems(0);
+        setBio("");
+        setName("");
+      })
+      .catch((err) => {
+        console.log("There was an error");
+      });
   };
 
   const handleAddLineItem = () => {
@@ -53,13 +64,15 @@ const CreateUserPanel = () => {
           onSubmit={createNewUser}
           className="bg-slate-400 rounded-lg shadow-lg grid grid-cols-1 gap-2 py-5 mb-20"
         >
-          <div className="flex flex-col mx-auto">
+          <div className="flex flex-col md:mx-auto justify-center items-center md:justify-start md:items-start">
             <label className="text-white font-semibold" htmlFor="name">
               Full Name
             </label>
             <input
               required={true}
-              className="bg-slate-300 rounded-md px-4"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
               type="text"
               name="name"
               id="name"
@@ -69,7 +82,9 @@ const CreateUserPanel = () => {
             </label>
             <textarea
               required={true}
-              className="bg-slate-300 rounded-md px-4"
+              onChange={(e) => setBio(e.target.value)}
+              value={bio}
+              className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
               type="text"
               name="bio"
               id="bio"
@@ -95,7 +110,7 @@ const CreateUserPanel = () => {
           >
             Add Line Item
           </button>
-          <div className="flex justify-end items-end">
+          <div className="flex justify-center items-center md:justify-end md:items-end">
             <button
               type="submit"
               className="

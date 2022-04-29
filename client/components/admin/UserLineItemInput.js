@@ -8,7 +8,7 @@ const UserLineItemInput = ({ lineItemId }) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col mx-auto justify-center items-center">
       <select
         onChange={selectChangeHandler}
         name="select-input"
@@ -20,7 +20,7 @@ const UserLineItemInput = ({ lineItemId }) => {
         <option value="resume">Resume Item</option>
       </select>
       {inputType === "resume" && (
-        <div className="flex flex-col">
+        <div className="grid grid-cols-1 place-items-center">
           <label className="text-white font-semibold" htmlFor={lineItemId}>
             Line Item Name
           </label>
