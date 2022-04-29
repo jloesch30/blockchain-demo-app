@@ -4,8 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Router, { useRouter } from "next/router";
-import { positions } from "@mui/system";
+import { useRouter } from "next/router";
 
 const bull = (
   <Box
@@ -37,12 +36,9 @@ const UserTile = ({ lineItemDescription, lineItemName, name, bio, userId }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <button
-          className="font-mono bg-blue-200 transition-all rounded-md py-2 px-4 hover:font-bold hover:shadow-md"
-          onClick={cardClickHandler}
-        >
+        <Button variant="text" onClick={cardClickHandler}>
           View Profile
-        </button>
+        </Button>
       </CardActions>
     </Card>
   );
