@@ -2,10 +2,12 @@ import Nav from "../nav/Nav";
 import { useState } from "react";
 import UserLineItemInput from "./UserLineItemInput";
 import axios from "axios";
+import useWeb3 from "../../hooks/useWeb3";
 
 const CreateUserPanel = () => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
   const [numberOfLineItems, setNumberOfLineItems] = useState(0);
+  const { web3, address } = useWeb3();
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
 
@@ -64,31 +66,47 @@ const CreateUserPanel = () => {
           onSubmit={createNewUser}
           className="bg-slate-400 rounded-lg shadow-lg grid grid-cols-1 gap-2 py-5 mb-20"
         >
-          <div className="flex flex-col md:mx-auto justify-center items-center md:justify-start md:items-start">
-            <label className="text-white font-semibold" htmlFor="name">
-              Full Name
-            </label>
-            <input
-              required={true}
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
-              type="text"
-              name="name"
-              id="name"
-            />
-            <label className="text-white font-semibold" htmlFor="bio">
-              Bio
-            </label>
-            <textarea
-              required={true}
-              onChange={(e) => setBio(e.target.value)}
-              value={bio}
-              className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
-              type="text"
-              name="bio"
-              id="bio"
-            />
+          <div className="grid grid-col-1 place-items-center">
+            <div className="flex flex-col md:mx-auto justify-center items-center">
+              <label className="text-white font-semibold" htmlFor="name">
+                Wallet Address
+              </label>
+              <input
+                value={address}
+                className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
+                type="text"
+                name="address"
+                id="address"
+                readOnly
+              />
+              <p className="text-xs text-center w-2/3 text-white mb-4">
+                This address is inputted by default from your connected wallet
+              </p>
+              <label className="text-white font-semibold" htmlFor="name">
+                Full Name
+              </label>
+              <input
+                required={true}
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
+                type="text"
+                name="name"
+                id="name"
+              />
+              <label className="text-white font-semibold" htmlFor="bio">
+                Bio
+              </label>
+              <textarea
+                required={true}
+                onChange={(e) => setBio(e.target.value)}
+                value={bio}
+                className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
+                type="text"
+                name="bio"
+                id="bio"
+              />
+            </div>
           </div>
           <div className="border-b-white border-2 mx-2 my-4 border-dashed"></div>
           {[...Array(numberOfLineItems)].map((e, i) => (

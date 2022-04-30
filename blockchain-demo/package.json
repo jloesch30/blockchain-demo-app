@@ -1,0 +1,11 @@
+{
+  "name": "blockchain-demo",
+  "version": "1.0.0",
+  "description": "smart contract deployment",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.8",
+    "dotenv": "^16.0.0"
+  }
+}

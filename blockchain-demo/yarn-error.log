@@ -1,0 +1,42 @@
+Arguments: 
+  /Users/joshloesch/.nvm/versions/node/v17.5.0/bin/node /usr/local/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js add dotenv @truffle/hdwallet
+
+PATH: 
+  /Users/joshloesch/.rbenv/shims:/Users/joshloesch/.rbenv/bin:/Users/joshloesch/google-cloud-sdk/bin:/Users/joshloesch/.nvm/versions/node/v17.5.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/joshloesch/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  17.5.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@truffle%2fhdwallet: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:67029:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:140883:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:141855:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:141777:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1342:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "blockchain-demo",
+    "version": "1.0.0",
+    "description": "smart contract deployment",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

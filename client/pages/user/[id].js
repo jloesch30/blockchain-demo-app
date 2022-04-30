@@ -36,13 +36,14 @@ const User = ({ data }) => {
       <div className="mx-4 grid grid-cols-1 place-items-center">
         <div className="bg-slate-300 w-full max-w-6xl rounded-md shadow-lg mt-5 py-10 grid grid-cols-1 md:grid-cols-2 place-items-center">
           <h2 className="text-white font-sans text-xl font-semibold text-center md:order-1">
-            Resume Items
+            Skill Items
           </h2>
           <div className="md:order-3 grid grid-cols-1 place-items-center w-full">
             {skillItems &&
               skillItems.map((value, index) => {
                 return (
                   <UserItemTile
+                    type="skill"
                     key={index}
                     description={value.description}
                     name={value.name}
@@ -52,13 +53,14 @@ const User = ({ data }) => {
           </div>
           <div className="border-b-white border-2 w-full mx-2 my-4 border-dashed md:hidden"></div>
           <h2 className="text-white font-sans text-xl font-semibold text-center md:order-2">
-            Skills
+            Resume Items
           </h2>
           <div className="md:order-4 grid grid-cols-1 place-items-center w-full">
             {resumeItems &&
               resumeItems.map((value, index) => {
                 return (
                   <UserItemTile
+                    type="resume"
                     key={index}
                     description={value.description}
                     name={value.name}
