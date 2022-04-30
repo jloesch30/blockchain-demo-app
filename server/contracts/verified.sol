@@ -2,7 +2,7 @@
 pragma solidity ^0.5.0;
 
 
-//simple contract that represents a certificate
+//simple contract that represents a certificate verification
 contract Verified{
     address owner;
     uint public certCount = 0;
@@ -19,6 +19,7 @@ contract Verified{
 
     mapping(uint => address) certToOwner;
     mapping(uint => Cert) certificates;
+    mapping(address => Cert[]) OwnerToCerts;
 
     event certCreated(
         uint id,
@@ -42,7 +43,7 @@ contract Verified{
                     external
                     payable
     {
-        require(msg.value > 0.02 ether);
+        require(msg.value > 0.02 ether, "Not enough Ether.");
         addCert(_itemName, _itemDescription, _to);
     }
     
@@ -56,8 +57,10 @@ contract Verified{
                     onlyOwner
     {
         certCount ++;
-        certificates[certCount] = Cert(certCount, owner, _itemName, _itemDescription, block.timestamp, block.timestamp +  (182 * 1 days), true); 
+        Cert memory newCert = Cert(certCount, owner, _itemName, _itemDescription, block.timestamp, block.timestamp +  (182 * 1 days), true); 
+        certificates[certCount] = newCert;
         certToOwner[certCount] = _to;
+        OwnerToCerts[_to].push(newCert);
         emit certCreated(certCount, _itemName, _itemDescription);
     }
 
@@ -77,7 +80,8 @@ contract Verified{
                 string memory _itemName,
                 string memory _itemDescription,
                 uint _valid_start,
-                uint _valid_end)
+                uint _valid_end,
+                bool _valid)
     {
         _issuer = certificates[_id].issuer;
         _owner = certToOwner[_id];
@@ -85,6 +89,7 @@ contract Verified{
         _itemDescription = certificates[_id].itemDescription;
         _valid_start = certificates[_id].valid_start;
         _valid_end = certificates[_id].valid_end;
+        _valid = certificates[_id].valid;
     }
 
     function ownerOf(uint256 _certId) external view returns (address) {
@@ -96,4 +101,7 @@ contract Verified{
         return state;
     }
 
+    function getUserCerts(address _to) external view returns (Cert[] memory) {
+        return OwnerToCerts[_to];
+    }
 }
