@@ -11,18 +11,19 @@ const User = ({ data }) => {
   const { id } = router.query;
   const { web3, address, vContract } = useWeb3();
   const { resumeItems, skillItems, userItems } = data;
+  const [verifiedSkills, setVerifiedSkills] = useState();
 
   // TODO: This loops infinitely
   useEffect(() => {
     const getUserVerifications = async () => {
       try {
         const res = await vContract.methods.getUserCerts(address).call();
+        setVerifiedSkills(res);
         console.log(res);
       } catch (err) {
         alert("There was an error processing your request");
       }
     };
-
     if (address && web3) getUserVerifications();
   }, [web3, address, vContract]);
 
@@ -52,7 +53,7 @@ const User = ({ data }) => {
       <div className="mx-4 grid grid-cols-1 place-items-center">
         <div className="bg-slate-300 w-full max-w-6xl rounded-md shadow-lg mt-5 py-10 grid grid-cols-1 md:grid-cols-2 place-items-center">
           <h2 className="text-white font-sans text-xl font-semibold text-center md:order-1">
-            Skill Items
+            Skills
           </h2>
           <div className="md:order-3 grid grid-cols-1 place-items-center w-full">
             {skillItems &&
@@ -64,6 +65,24 @@ const User = ({ data }) => {
                     key={index}
                     description={value.data.description}
                     name={value.data.name}
+                  ></UserItemTile>
+                );
+              })}
+          </div>
+          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-2">
+            Verified Skills
+          </h2>
+          <div className="md:order-4 grid grid-cols-1 place-items-center w-full">
+            {verifiedSkills &&
+              verifiedSkills.map((value, index) => {
+                console.log(value);
+                return (
+                  <UserItemTile
+                    id={value.id}
+                    type="resume"
+                    key={index}
+                    description={value.itemDescription}
+                    name={value.itemName}
                   ></UserItemTile>
                 );
               })}
