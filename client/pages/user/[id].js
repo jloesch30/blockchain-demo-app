@@ -23,8 +23,8 @@ const User = ({ data }) => {
       }
     };
 
-    if (address) getUserVerifications();
-  }, []);
+    if (address && web3) getUserVerifications();
+  }, [web3, address, vContract]);
 
   return (
     <>

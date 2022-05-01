@@ -15,14 +15,14 @@ const useWeb3 = () => {
             setAddress(accounts[0]);
             let w3 = new Web3(ethereum);
             setWeb3(w3);
-            const c = verifiedContract(web3);
+            const c = verifiedContract(w3);
             setVContract(c);
           })
           .catch((err) => {
             console.log(err);
           })
       : console.log("Please install metamask");
-  }, [web3]);
+  }, []);
   return { web3, address, vContract };
 };
 

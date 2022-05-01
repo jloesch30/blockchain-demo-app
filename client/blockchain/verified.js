@@ -96,7 +96,11 @@ const abi = [
   },
 ];
 
-const verifiedContract = (web3) =>
-  new web3.eth.Contract(abi, "0x4678B6fa8ad385322AF8aD91fbf4103f071D3c20");
+const verifiedContract = (web3) => {
+  return new web3.eth.Contract(
+    abi,
+    "0x4678B6fa8ad385322AF8aD91fbf4103f071D3c20"
+  );
+};
 
 export default verifiedContract;
