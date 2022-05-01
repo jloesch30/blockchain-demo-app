@@ -1,10 +1,7 @@
-import Web3 from "web3";
-
-const provider = new Web3.providers.HttpProvider(
-  "https://rinkeby.infura.io/v3/0f860b9581664e3d915dade53555159f"
-);
-
-const web3 = new Web3(provider);
+// TODO: We are not going to use the infura node to sign this transaction (it cant)
+// const provider = new Web3.providers.HttpProvider(
+//   "https://rinkeby.infura.io/v3/0f860b9581664e3d915dade53555159f"
+// );
 
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
@@ -45,6 +42,29 @@ const abi = [
       { internalType: "string", name: "_itemDescription", type: "string" },
       { internalType: "uint256", name: "_valid_start", type: "uint256" },
       { internalType: "uint256", name: "_valid_end", type: "uint256" },
+      { internalType: "bool", name: "_valid", type: "bool" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_to", type: "address" }],
+    name: "getUserCerts",
+    outputs: [
+      {
+        components: [
+          { internalType: "uint256", name: "id", type: "uint256" },
+          { internalType: "address", name: "issuer", type: "address" },
+          { internalType: "string", name: "itemName", type: "string" },
+          { internalType: "string", name: "itemDescription", type: "string" },
+          { internalType: "uint256", name: "valid_start", type: "uint256" },
+          { internalType: "uint256", name: "valid_end", type: "uint256" },
+          { internalType: "bool", name: "valid", type: "bool" },
+        ],
+        internalType: "struct VerifiedV2.Cert[]",
+        name: "",
+        type: "tuple[]",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -76,9 +96,7 @@ const abi = [
   },
 ];
 
-const vmcontract = new Web3.eth.Contract(
-  abi,
-  "0xb482A023e8B7f91b049a3c414839597AD095b53E"
-);
+const verifiedContract = (web3) =>
+  new web3.eth.Contract(abi, "0x4678B6fa8ad385322AF8aD91fbf4103f071D3c20");
 
-export default vmcontract;
+export default verifiedContract;

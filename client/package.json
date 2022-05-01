@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "compile": "solcjs --abi --include-path node_modules/ --base-path . blockchain/contracts/Verified.sol --output-dir blockchain/build"
+    "compile": "solcjs --abi --include-path node_modules/ --base-path . blockchain/contracts/VerifiedV2.sol --output-dir blockchain/build"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",

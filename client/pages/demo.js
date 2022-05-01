@@ -5,19 +5,15 @@ import db from "../utils/db";
 import AuthContext from "../store/auth-context";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
-import useWeb3 from "../hooks/useWeb3";
 
 const Demo = ({ users }) => {
   const [renderPageValue, setRenderPageValue] = useState(0);
-  const { web3, address } = useWeb3();
   const router = useRouter();
   const ctx = useContext(AuthContext);
   const adminClickHandler = (e) => {
     e.preventDefault();
     router.push("/admin");
   };
-  console.log(ctx);
-  console.log(address);
   return (
     <>
       <Nav

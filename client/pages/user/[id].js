@@ -2,13 +2,29 @@ import Nav from "../../components/nav/Nav";
 import { useRouter } from "next/router";
 import db from "../../utils/db";
 import UserItemTile from "../../components/demo/UserItemTile";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useWeb3 from "../../hooks/useWeb3";
 
 const User = ({ data }) => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
   const router = useRouter();
   const { id } = router.query;
+  const { web3, address, vContract } = useWeb3();
   const { resumeItems, skillItems, userItems } = data;
+
+  // TODO: This loops infinitely
+  useEffect(() => {
+    const getUserVerifications = async () => {
+      try {
+        const res = await vContract.methods.getUserCerts(address).call();
+        console.log(res);
+      } catch (err) {
+        alert("There was an error processing your request");
+      }
+    };
+
+    if (address) getUserVerifications();
+  }, []);
 
   return (
     <>
@@ -43,10 +59,11 @@ const User = ({ data }) => {
               skillItems.map((value, index) => {
                 return (
                   <UserItemTile
+                    id={value.id}
                     type="skill"
                     key={index}
-                    description={value.description}
-                    name={value.name}
+                    description={value.data.description}
+                    name={value.data.name}
                   ></UserItemTile>
                 );
               })}
@@ -60,10 +77,11 @@ const User = ({ data }) => {
               resumeItems.map((value, index) => {
                 return (
                   <UserItemTile
+                    id={value.id}
                     type="resume"
                     key={index}
-                    description={value.description}
-                    name={value.name}
+                    description={value.data.description}
+                    name={value.data.name}
                   ></UserItemTile>
                 );
               })}
@@ -88,12 +106,18 @@ export async function getServerSideProps(context) {
   // data parsing
   const resumeItems = [];
   resumeSnap.forEach((value, index) => {
-    resumeItems.push(value.data());
+    resumeItems.push({
+      id: value.id,
+      data: value.data(),
+    });
   });
 
   const skillItems = [];
   skillSnap.forEach((value, index) => {
-    skillItems.push(value.data());
+    skillItems.push({
+      id: value.id,
+      data: value.data(),
+    });
   });
 
   const data = {
