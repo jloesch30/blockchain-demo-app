@@ -10,6 +10,7 @@ const CreateUserPanel = () => {
   const { web3, address } = useWeb3();
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const createNewUser = async (event) => {
     event.preventDefault();
@@ -29,6 +30,8 @@ const CreateUserPanel = () => {
     };
 
     // submit the form data to the route
+    setLoading(true);
+    console.log(loading);
     await axios
       .post("/api/user/create", formData, config)
       .then((res) => {
@@ -39,6 +42,7 @@ const CreateUserPanel = () => {
       .catch((err) => {
         console.log("There was an error");
       });
+    setLoading(false);
   };
 
   const handleAddLineItem = () => {
@@ -130,17 +134,18 @@ const CreateUserPanel = () => {
           </button>
           <div className="flex justify-center items-center md:justify-end md:items-end">
             <button
+              disabled={loading}
               type="submit"
-              className="
-              transition-all 
+              className={`
+              transition-all
               text-white 
-              bg-red-400  
+              ${loading ? "bg-slate-600" : "bg-red-500"}
               mx-4
               my-2
               px-2 
               py-2 
               rounded-md 
-              hover:shadow-lg"
+              hover:shadow-lg`}
             >
               Submit New Demo Item
             </button>
