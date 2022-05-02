@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useWeb3 from "../../hooks/useWeb3";
 
-const UserItemTile = ({ name, description, validation, type, id }) => {
+const UserItemTile = ({ name, description, validation, type }) => {
   const [certs, setCerts] = useState();
   const { web3, address, vContract } = useWeb3();
   const router = useRouter();

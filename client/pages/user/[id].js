@@ -17,7 +17,9 @@ const User = ({ data }) => {
   useEffect(() => {
     const getUserVerifications = async () => {
       try {
-        const res = await vContract.methods.getUserCerts(address).call();
+        const res = await vContract.methods
+          .getUserCerts(data.userItems.address)
+          .call();
         setVerifiedSkills(res);
         console.log(res);
       } catch (err) {
@@ -52,7 +54,7 @@ const User = ({ data }) => {
       {!resumeItems && !skillItems && <h1>No items in profile</h1>}
       <div className="mx-4 grid grid-cols-1 place-items-center">
         <div className="bg-slate-300 w-full max-w-6xl rounded-md shadow-lg mt-5 py-10 grid grid-cols-1 md:grid-cols-2 place-items-center">
-          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-1">
+          <h2 className="md:order-1 text-white font-sans text-xl font-semibold text-center">
             Skills
           </h2>
           <div className="md:order-3 grid grid-cols-1 place-items-center w-full">
@@ -69,10 +71,10 @@ const User = ({ data }) => {
                 );
               })}
           </div>
-          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-2">
+          <h2 className="md:order-2 text-white font-sans text-xl font-semibold text-center">
             Verified Skills
           </h2>
-          <div className="md:order-4 grid grid-cols-1 place-items-center w-full">
+          <div className="md:order-4 md:row-span-2 grid grid-cols-1 place-items-center self-start w-full">
             {verifiedSkills &&
               verifiedSkills.map((value, index) => {
                 console.log(value);
@@ -88,10 +90,10 @@ const User = ({ data }) => {
               })}
           </div>
           <div className="border-b-white border-2 w-full mx-2 my-4 border-dashed md:hidden"></div>
-          <h2 className="text-white font-sans text-xl font-semibold text-center md:order-2">
+          <h2 className="md:order-5 text-white font-sans text-xl font-semibold text-center">
             Resume Items
           </h2>
-          <div className="md:order-4 grid grid-cols-1 place-items-center w-full">
+          <div className="md:order-7 grid grid-cols-1 place-items-center w-full">
             {resumeItems &&
               resumeItems.map((value, index) => {
                 return (
@@ -107,7 +109,6 @@ const User = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="mt-4 grid gap-6 grid-cols-1 md:grid-cols-2"></div>
     </>
   );
 };
@@ -121,6 +122,8 @@ export async function getServerSideProps(context) {
   const resumeSnap = await userRef.collection("resume").get();
   const skillSnap = await userRef.collection("skills").get();
   const userSnap = await userRef.get();
+
+  console.log(userSnap.data().address);
 
   // data parsing
   const resumeItems = [];
