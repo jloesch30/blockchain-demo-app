@@ -7,14 +7,17 @@ import useWeb3 from "../../hooks/useWeb3";
 
 const User = ({ data }) => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
-  const router = useRouter();
-  const { id } = router.query;
   const { web3, address, vContract } = useWeb3();
   const { resumeItems, skillItems, userItems } = data;
   const [verifiedSkills, setVerifiedSkills] = useState();
+  const [sameUser, setSameUser] = useState(false);
 
   // TODO: This loops infinitely
   useEffect(() => {
+    if (data.userItems.address === address) {
+      setSameUser(true);
+    }
+
     const getUserVerifications = async () => {
       try {
         const res = await vContract.methods
@@ -63,7 +66,8 @@ const User = ({ data }) => {
                 return (
                   <UserItemTile
                     id={value.id}
-                    type="skill"
+                    userId={data.userId}
+                    isSameUser={sameUser}
                     key={index}
                     description={value.data.description}
                     name={value.data.name}
@@ -74,7 +78,7 @@ const User = ({ data }) => {
           <h2 className="md:order-2 text-white font-sans text-xl font-semibold text-center">
             Verified Skills
           </h2>
-          <div className="md:order-4 md:row-span-2 grid grid-cols-1 place-items-center self-start w-full">
+          <div className="md:order-4 md:row-span-4 grid grid-cols-1 place-items-center self-start w-full">
             {verifiedSkills &&
               verifiedSkills.map((value, index) => {
                 console.log(value);
@@ -93,7 +97,7 @@ const User = ({ data }) => {
           <h2 className="md:order-5 text-white font-sans text-xl font-semibold text-center">
             Resume Items
           </h2>
-          <div className="md:order-7 grid grid-cols-1 place-items-center w-full">
+          <div className="md:order-7 grid grid-cols-1 place-items-center self-start w-full">
             {resumeItems &&
               resumeItems.map((value, index) => {
                 return (
@@ -145,6 +149,7 @@ export async function getServerSideProps(context) {
   const data = {
     resumeItems: resumeItems,
     skillItems: skillItems,
+    userId: id,
     userItems: userSnap.data(),
   };
 

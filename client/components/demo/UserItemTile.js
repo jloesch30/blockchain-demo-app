@@ -1,12 +1,21 @@
 import { Button } from "@mui/material";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import useWeb3 from "../../hooks/useWeb3";
+import axios from "axios";
 
-const UserItemTile = ({ name, description, validation, type }) => {
+const UserItemTile = ({
+  name,
+  description,
+  isSameUser,
+  userId,
+  id: skillId,
+}) => {
   const [certs, setCerts] = useState();
   const { web3, address, vContract } = useWeb3();
-  const router = useRouter();
+
+  const testUrl = () => {
+    console.log(`/api/user/skill/remove?userId=${userId}&skillId=${skillId}`);
+  };
 
   const verifySkillHandler = async () => {
     // TODO: interacting with the smart contract
@@ -18,7 +27,13 @@ const UserItemTile = ({ name, description, validation, type }) => {
           value: web3.utils.toWei("0.021", "ether"),
         });
       setCerts(certs);
-      console.log(certs);
+
+      console.log(`/api/user/skill/remove?userId=${userId}&skillId=${skillId}`);
+
+      // remove the skill from the database
+      const axiosRes = await axios.get(
+        `/api/user/skill/remove?userId=${userId}&skillId=${skillId}`
+      );
     } catch (err) {
       alert("There was an error or the transaction was cancelled");
     }
@@ -33,7 +48,7 @@ const UserItemTile = ({ name, description, validation, type }) => {
           </h1>
         </li>
         <li>{description}</li>
-        {type === "skill" && (
+        {isSameUser && (
           <Button
             onClick={verifySkillHandler}
             className="self-end bg-blue-300"
