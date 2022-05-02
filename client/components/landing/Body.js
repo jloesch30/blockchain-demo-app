@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import placeholderJpeg from "../../public/assets/placeholder.jpeg";
+import demoLogo from "../../public/assets/demo_logo.png";
 
 const Body = ({ linkOutOfHome }) => {
   return (
@@ -36,7 +36,7 @@ const Body = ({ linkOutOfHome }) => {
           <p>Technologies Involved</p>
         </div>
         <div className="relative -z-10">
-          <Image src={placeholderJpeg}></Image>
+          <Image src={demoLogo}></Image>
         </div>
       </div>
       <div className="mx-10 my-10 grid grid-cols-1 place-items-center gap-5">
