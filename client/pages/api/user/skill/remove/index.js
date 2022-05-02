@@ -8,7 +8,12 @@ export default async function handler(req, res) {
   const { userId, skillId } = req.query;
   const admin = await isAdmin(req);
 
-  if (!session || !admin) {
+  // Admin only
+  // if (!session || !admin) {
+  //   res.status(505).json({ message: "User is not authenticated" });
+  // }
+
+  if (!session) {
     res.status(505).json({ message: "User is not authenticated" });
   }
 

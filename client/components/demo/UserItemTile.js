@@ -28,8 +28,6 @@ const UserItemTile = ({
         });
       setCerts(certs);
 
-      console.log(`/api/user/skill/remove?userId=${userId}&skillId=${skillId}`);
-
       // remove the skill from the database
       const axiosRes = await axios.get(
         `/api/user/skill/remove?userId=${userId}&skillId=${skillId}`

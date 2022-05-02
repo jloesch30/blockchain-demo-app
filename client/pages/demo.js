@@ -30,18 +30,16 @@ const Demo = ({ users }) => {
           </p>
         </div>
       )}
-      {ctx.isAdmin && (
-        <div className="grid grid-cols-1 place-items-center">
-          <Button
-            sx={{ zIndex: 0, marginBottom: 12 }}
-            variant="contained"
-            className="bg-blue-300"
-            onClick={adminClickHandler}
-          >
-            New User
-          </Button>
-        </div>
-      )}
+      <div className="grid grid-cols-1 place-items-center">
+        <Button
+          sx={{ zIndex: 0, marginBottom: 12 }}
+          variant="contained"
+          className="bg-blue-300"
+          onClick={adminClickHandler}
+        >
+          New User
+        </Button>
+      </div>
     </>
   );
 };
