@@ -1,8 +1,10 @@
 import Nav from "../components/nav/Nav";
+import { useState } from "react";
 
 const ContractCode = () => {
+  const [renderPageValue, setRenderPageValue] = useState(1);
   return (
-    <Nav>
+    <Nav renderPageValue={renderPageValue}>
       <div>
         <p>Contract code on the way!</p>
       </div>
