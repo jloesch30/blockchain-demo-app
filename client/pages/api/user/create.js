@@ -27,6 +27,7 @@ export default async function handler(req, res) {
     try {
       console.log("inside of try block");
       const { id } = await db.collection("users").add({
+        address: data.address[0],
         name: data.name[0],
         bio: data.bio[0],
         created: new Date().toISOString(),

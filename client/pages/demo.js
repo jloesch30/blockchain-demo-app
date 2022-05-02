@@ -14,7 +14,6 @@ const Demo = ({ users }) => {
     e.preventDefault();
     router.push("/admin");
   };
-  console.log(ctx);
   return (
     <>
       <Nav
