@@ -26,8 +26,9 @@ const Body = ({ linkOutOfHome }) => {
             can easily add and certify professional credentials. Our system runs
             on the ethereum test net and once you connect your wallet to our
             application, we automatically link your certification wallet with
-            our service and that's it! No more background checks & certificate
-            documents. Welcome to the future of professional social platforms!
+            our service and that&rsquo;s it! No more background checks &
+            certificate documents. Welcome to the future of professional social
+            platforms!
           </p>
         </div>
         <div className="flex justify-center items-center my-5 md:my-10 text-2xl font-bold text-primaryFont font-mono">
