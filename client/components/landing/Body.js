@@ -13,23 +13,21 @@ const Body = ({ linkOutOfHome }) => {
           </h1>
         </div>
       </div>
-      <div className="mt-40 mx-10 grid gap-5 grid-cols-1 md:grid-cols-2">
+      <div className="mt-40 mx-10 grid gap-5 grid-cols-1 md:grid-cols-2 max-w-5xl md:mx-auto place-items-center">
         <div className="md:col-span-2">
           <h2 className="text-2xl font-mono font-bold text-primaryFont">
             How does it work?
           </h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum ullam
-            repellat dicta corrupti natus dignissimos est, provident at aut
-            atque ea iste architecto sequi, suscipit, molestias id maiores odit
-            quae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-            quod commodi eaque assumenda nemo eius laboriosam numquam sed
-            repudiandae sint molestiae molestias, obcaecati beatae voluptates
-            sit! Quibusdam debitis dignissimos dolorem? Lorem ipsum dolor, sit
-            amet consectetur adipisicing elit. Vero, quisquam exercitationem
-            veritatis qui tenetur distinctio commodi esse facere est aspernatur!
-            Libero ad illum aliquid suscipit incidunt. Consequatur dolor
-            accusantium dignissimos!
+          <p className="max-w-3xl">
+            <br />
+            Welcome to BlockedIn! <br />
+            <br />
+            Here at BlockedIn we strive to create a platform where our members
+            can easily add and certify professional credentials. Our system runs
+            on the ethereum test net and once you connect your wallet to our
+            application, we automatically link your certification wallet with
+            our service and that's it! No more background checks & certificate
+            documents. Welcome to the future of professional social platforms!
           </p>
         </div>
         <div className="flex justify-center items-center my-5 md:my-10 text-2xl font-bold text-primaryFont font-mono">
