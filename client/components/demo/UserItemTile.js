@@ -24,7 +24,7 @@ const UserItemTile = ({
         .requestACert(name, description, address)
         .send({
           from: address,
-          value: web3.utils.toWei("0.021", "ether"),
+          value: web3.utils.toWei("0.0012", "ether"),
         });
       setCerts(certs);
 

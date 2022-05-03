@@ -61,7 +61,7 @@ const abi = [
           { internalType: "uint256", name: "valid_end", type: "uint256" },
           { internalType: "bool", name: "valid", type: "bool" },
         ],
-        internalType: "struct VerifiedV3.Cert[]",
+        internalType: "struct VerifiedV4.Cert[]",
         name: "",
         type: "tuple[]",
       },
@@ -99,7 +99,7 @@ const abi = [
 const verifiedContract = (web3) => {
   return new web3.eth.Contract(
     abi,
-    "0x0AAe7B0e40FA2535Af4Abc3eFBEbD1736Be405ea"
+    "0x7d9F27485dc54cf489f78b09C8D4421B82E888D8"
   );
 };
 

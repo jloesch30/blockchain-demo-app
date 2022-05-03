@@ -24,7 +24,6 @@ const User = ({ data }) => {
           .getUserCerts(data.userItems.address)
           .call();
         setVerifiedSkills(res);
-        console.log(res);
       } catch (err) {
         alert("There was an error processing your request");
       }
