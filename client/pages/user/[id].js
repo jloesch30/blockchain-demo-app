@@ -115,7 +115,7 @@ const User = ({ data }) => {
         </div>
         <div className="mx-10 mt-3 mb-20 flex flex-row gap-2 max-w-2xl">
           <Image src={validateLogo} width={20} height={20}></Image>
-          <p className="italic">
+          <p className="italic text-xs md:text-base">
             Items with this logo are stored on chain and validated by a Rinkeby
             smart contract
           </p>
