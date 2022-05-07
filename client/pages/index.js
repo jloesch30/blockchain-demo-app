@@ -3,8 +3,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Body from "../components/landing/Body";
 import SignOutButton from "../components/auth/SignOutButton";
+import useWeb3 from "../hooks/useWeb3";
 
 export default function Index() {
+  const { web3, address } = useWeb3(); // initialize web3 and make sure it is running
   const { data: session } = useSession();
   const router = useRouter();
 

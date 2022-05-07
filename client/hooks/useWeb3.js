@@ -22,7 +22,7 @@ const useWeb3 = () => {
             console.log(err);
           })
       : console.log("Please install metamask");
-  }, []);
+  }, [web3, address]);
   return { web3, address, vContract };
 };
 

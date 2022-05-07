@@ -16,19 +16,53 @@ const Body = ({ linkOutOfHome }) => {
       <div className="mt-40 mx-10 grid gap-5 grid-cols-1 md:grid-cols-2 max-w-5xl md:mx-auto place-items-center">
         <div className="md:col-span-2">
           <h2 className="text-2xl font-mono font-bold text-primaryFont">
+            Why was it designed?
+          </h2>
+          <p className="max-w-3xl">
+            <br />
+            BlockedIn is a proof of concept when thinking about credential
+            management. This project was created to demonstrate the ease of use
+            and possible functionalities available in this line of technology.
+            In addition, many people are not familiar with the implications of
+            blockchain outside of crypto currency or NFTs such as digital art;
+            Not only did we want to demonstrate the vast usability of blockchain
+            technology, but we hope that this demonstration allows individuals
+            to feel conformable in this emerging ecosystem. <br />
+            <br />
+            The subject matter of this application is to demonstrate the use of
+            credential verification in a distributed manner. In a world were
+            certifications are essential in pursuing careers and other
+            opportunities we wanted to create a technology that allows users to
+            own their credentials. In doing so, regardless of what system or
+            technology the user consumes, their certifications follow them and
+            can be validated by interested parties. Resumes will no longer just
+            be plain text that recruiters have to track down validations, they
+            will be living documents that contain data regarding each
+            credential.
+          </p>
+          <h2 className="text-2xl font-mono font-bold text-primaryFont mt-8">
             How does it work?
           </h2>
           <p className="max-w-3xl">
             <br />
-            Welcome to BlockedIn! <br />
-            <br />
-            Here at BlockedIn we strive to create a platform where our members
-            can easily add and certify professional credentials. Our system runs
-            on the ethereum test net and once you connect your wallet to our
-            application, we automatically link your certification wallet with
-            our service and that&rsquo;s it! No more background checks &
-            certificate documents. Welcome to the future of professional social
-            platforms!
+            Surprisingly, building Web3 applications utilizes a lot of the same
+            skills and techniques that are used when making that applications we
+            know and love. In this case, the application you are looking at now
+            was built on top of Next.js, a framework utilizing React that has
+            built in server side rendering methods. This is particularly useful
+            for dynamic applications that interact with APIs, databases, or
+            other behind the scenes logic that power a user experience. The
+            Next.js application is utilizing the Web3.js library, essential to
+            connecting with wallets such as MetaMask or Coinbase. This is why
+            you were asked to install Metamask on your computer when first
+            visiting the site, or why the Metamask wallet opened in a separate
+            window prompting you to connect to the domain. Once connected, you
+            are ready to use the app as intended by sending transactions to a
+            smart contract deployed to the Rinkeby test network to receive
+            certifications for your user items. The only central database used
+            to power this app is for inital login (to prevent bots) and to store
+            users and their associated non-verified information such as name,
+            bio, etc.
           </p>
         </div>
         <div className="flex justify-center items-center my-5 md:my-10 text-2xl font-bold text-primaryFont font-mono">
