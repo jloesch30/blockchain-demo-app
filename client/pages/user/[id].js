@@ -1,9 +1,10 @@
 import Nav from "../../components/nav/Nav";
-import { useRouter } from "next/router";
+import validateLogo from "../../public/assets/verified.svg";
 import db from "../../utils/db";
 import UserItemTile from "../../components/demo/UserItemTile";
 import { useEffect, useState } from "react";
 import useWeb3 from "../../hooks/useWeb3";
+import Image from "next/image";
 
 const User = ({ data }) => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
@@ -85,6 +86,7 @@ const User = ({ data }) => {
                   <UserItemTile
                     id={value.id}
                     type="resume"
+                    verified={true}
                     key={index}
                     description={value.itemDescription}
                     name={value.itemName}
@@ -110,6 +112,13 @@ const User = ({ data }) => {
                 );
               })}
           </div>
+        </div>
+        <div className="mx-10 mt-3 mb-20 flex flex-row gap-2 max-w-2xl">
+          <Image src={validateLogo} width={20} height={20}></Image>
+          <p className="italic">
+            Items with this logo are stored on chain and validated by a Rinkeby
+            smart contract
+          </p>
         </div>
       </div>
     </>

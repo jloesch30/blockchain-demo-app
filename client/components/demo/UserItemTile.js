@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import useWeb3 from "../../hooks/useWeb3";
 import axios from "axios";
+import Image from "next/image";
+import verifiedImage from "../../public/assets/verified.svg";
 
 const UserItemTile = ({
   name,
@@ -9,13 +11,10 @@ const UserItemTile = ({
   isSameUser,
   userId,
   id: skillId,
+  verified,
 }) => {
   const [certs, setCerts] = useState();
   const { web3, address, vContract } = useWeb3();
-
-  const testUrl = () => {
-    console.log(`/api/user/skill/remove?userId=${userId}&skillId=${skillId}`);
-  };
 
   const verifySkillHandler = async () => {
     // TODO: interacting with the smart contract
@@ -42,10 +41,15 @@ const UserItemTile = ({
       <ul className="flex flex-col">
         <li>
           <h1>
-            <span className="font-bold">Line Item Name:</span> {name}
+            <span className="font-bold text-primaryFont font-sans">{name}</span>
           </h1>
         </li>
         <li>{description}</li>
+        <div className="grid place-items-end my-1">
+          {verified && (
+            <Image src={verifiedImage} height={20} width={20}></Image>
+          )}
+        </div>
         {isSameUser && (
           <Button
             onClick={verifySkillHandler}
