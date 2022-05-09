@@ -11,6 +11,11 @@ export default function Index() {
   const router = useRouter();
 
   const loginOrRedirect = () => {
+    if (!address) {
+      alert("Please login to Metamask to continue to the demo");
+      return;
+    }
+
     if (session) {
       router.push("/demo");
       return;

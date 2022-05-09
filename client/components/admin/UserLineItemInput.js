@@ -8,19 +8,19 @@ const UserLineItemInput = ({ lineItemId }) => {
   };
 
   return (
-    <div className="flex flex-col mx-auto justify-center items-center">
+    <div className="flex flex-col mx-4 items-center">
       <select
         onChange={selectChangeHandler}
         name="select-input"
         id="select-input"
-        className="rounded-md mx-10 mb-2"
+        className="rounded-md mb-2 max-w-sm self-center"
         defaultValue={"skill"}
       >
         <option value="skill">Skill</option>
         <option value="resume">Resume Item</option>
       </select>
       {inputType === "resume" && (
-        <div className="grid grid-cols-1 place-items-center">
+        <div className="grid grid-cols-1 max-w-lg">
           <label className="text-white font-semibold" htmlFor={lineItemId}>
             Line Item Name
           </label>
@@ -44,7 +44,7 @@ const UserLineItemInput = ({ lineItemId }) => {
         </div>
       )}
       {inputType === "skill" && (
-        <div className="flex flex-col">
+        <div className="grid grid-cols-1 max-w-lg">
           <label className="text-white font-semibold" htmlFor={lineItemId}>
             Skill Name
           </label>

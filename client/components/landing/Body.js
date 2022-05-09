@@ -20,14 +20,21 @@ const Body = ({ linkOutOfHome }) => {
           </h2>
           <p className="max-w-3xl">
             <br />
-            BlockedIn is a proof of concept when thinking about credential
-            management. This project was created to demonstrate the ease of use
-            and possible functionalities available in this line of technology.
-            In addition, many people are not familiar with the implications of
-            blockchain outside of crypto currency or NFTs such as digital art;
-            Not only did we want to demonstrate the vast usability of blockchain
-            technology, but we hope that this demonstration allows individuals
-            to feel conformable in this emerging ecosystem. <br />
+            BlockedIn is a{" "}
+            <span className="font-medium text-primaryFont">
+              proof of concept
+            </span>{" "}
+            when thinking about{" "}
+            <span className="font-medium text-primaryFont">
+              credential management.{" "}
+            </span>{" "}
+            This project was created to demonstrate the ease of use and possible
+            functionalities available in this line of technology. In addition,
+            many people are not familiar with the implications of blockchain
+            outside of crypto currency or NFTs such as digital art; Not only did
+            we want to demonstrate the vast usability of blockchain technology,
+            but we hope that this demonstration allows individuals to feel
+            conformable in this emerging ecosystem. <br />
             <br />
             The subject matter of this application is to demonstrate the use of
             credential verification in a distributed manner. In a world were

@@ -5,7 +5,9 @@ const Admin = () => {
   return (
     <>
       <Nav></Nav>
-      <CreateUserPanel></CreateUserPanel>
+      <div className="flex justify-center items-center">
+        <CreateUserPanel></CreateUserPanel>
+      </div>
     </>
   );
 };

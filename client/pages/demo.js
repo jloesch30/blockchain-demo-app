@@ -37,7 +37,7 @@ const Demo = ({ users }) => {
           className="bg-blue-300"
           onClick={adminClickHandler}
         >
-          New User
+          Create your user
         </Button>
       </div>
     </>

@@ -62,22 +62,22 @@ const CreateUserPanel = () => {
         renderPageValue={renderPageValue}
         setRenderPageValue={setRenderPageValue}
       ></Nav>
-      <div className="mt-40 mx-10 px-10">
+      <div className="mt-40 mx-3 max-w-6xl">
         <h1 className="font-mono font-extrabold text-[1.5rem] text-center mb-6">
           Please add your users below with their line items
         </h1>
         <form
           onSubmit={createNewUser}
-          className="bg-slate-400 rounded-lg shadow-lg grid grid-cols-1 gap-2 py-5 mb-20"
+          className="bg-slate-400 rounded-lg shadow-lg grid grid-cols-1 gap-2 py-5 mb-36"
         >
           <div className="grid grid-col-1 place-items-center">
-            <div className="flex flex-col md:mx-auto justify-center items-center">
+            <div className="flex flex-col md:mx-auto justify-center items-center mx-3">
               <label className="text-white font-semibold" htmlFor="name">
                 Wallet Address
               </label>
               <input
                 value={address}
-                className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
+                className="bg-slate-300 rounded-md w-full px-4"
                 type="text"
                 name="address"
                 id="address"
@@ -93,7 +93,7 @@ const CreateUserPanel = () => {
                 required={true}
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
+                className="bg-slate-300 rounded-md w-full px-4"
                 type="text"
                 name="name"
                 id="name"
@@ -105,7 +105,7 @@ const CreateUserPanel = () => {
                 required={true}
                 onChange={(e) => setBio(e.target.value)}
                 value={bio}
-                className="bg-slate-300 rounded-md w-3/4 md:w-auto px-4"
+                className="bg-slate-300 rounded-md mx-1 px-4 w-full"
                 type="text"
                 name="bio"
                 id="bio"
