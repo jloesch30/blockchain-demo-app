@@ -3,7 +3,7 @@ import { useState } from "react";
 import UserLineItemInput from "./UserLineItemInput";
 import axios from "axios";
 import useWeb3 from "../../hooks/useWeb3";
-import Loading from "../components/loading/Loading";
+import Loading from "../../components/loading/Loading";
 
 const CreateUserPanel = () => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
