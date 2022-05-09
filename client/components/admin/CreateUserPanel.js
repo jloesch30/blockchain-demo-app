@@ -70,8 +70,9 @@ const CreateUserPanel = () => {
         <p className="text-center mx-10 mb-3 text-xs md:text-base font-sans italic">
           Each user is allowed to have one profile to interact with demo. Once
           created, you will see the profile appear on the home page and can
-          begin submit "skills" to be verified. If you would like to create a
-          new profile, please use the delete button on your created profile.
+          begin submit &quotskills&quot to be verified. If you would like to
+          create a new profile, please use the delete button on your created
+          profile.
         </p>
         <form
           onSubmit={createNewUser}
