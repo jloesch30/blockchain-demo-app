@@ -33,7 +33,12 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <SessionProvider session={session}>
         {loading ? (
           <div className="flex flex-col justify-center items-center">
-            <Loading type={"bars"} color={"#0274B3"}></Loading>
+            <Loading
+              type={"bars"}
+              color={"#0274B3"}
+              width={300}
+              height={300}
+            ></Loading>
           </div>
         ) : (
           <>

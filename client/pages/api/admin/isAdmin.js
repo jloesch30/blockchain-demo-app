@@ -3,7 +3,6 @@ import db from "../../../utils/db";
 
 export default async function handler(req, res) {
   const session = await getSession({ req });
-  console.log(session);
   if (!session) {
     res.status(200).json({ isAdmin: false });
     return;

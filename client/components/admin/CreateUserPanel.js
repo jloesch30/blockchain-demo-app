@@ -3,6 +3,7 @@ import { useState } from "react";
 import UserLineItemInput from "./UserLineItemInput";
 import axios from "axios";
 import useWeb3 from "../../hooks/useWeb3";
+import Loading from "../components/loading/Loading";
 
 const CreateUserPanel = () => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
@@ -66,6 +67,12 @@ const CreateUserPanel = () => {
         <h1 className="font-mono font-extrabold text-[1.5rem] text-center mb-6">
           Please add your users below with their line items
         </h1>
+        <p className="text-center mx-10 mb-3 text-xs md:text-base font-sans italic">
+          Each user is allowed to have one profile to interact with demo. Once
+          created, you will see the profile appear on the home page and can
+          begin submit "skills" to be verified. If you would like to create a
+          new profile, please use the delete button on your created profile.
+        </p>
         <form
           onSubmit={createNewUser}
           className="bg-slate-400 rounded-lg shadow-lg grid grid-cols-1 gap-2 py-5 mb-36"
@@ -133,10 +140,18 @@ const CreateUserPanel = () => {
             Add Line Item
           </button>
           <div className="flex justify-center items-center md:justify-end md:items-end">
-            <button
-              disabled={loading}
-              type="submit"
-              className={`
+            {loading ? (
+              <Loading
+                type={"balls"}
+                color={"#0274B3"}
+                width={100}
+                height={100}
+              />
+            ) : (
+              <button
+                disabled={loading}
+                type="submit"
+                className={`
               transition-all
               text-white 
               ${loading ? "bg-slate-600" : "bg-red-500"}
@@ -146,9 +161,10 @@ const CreateUserPanel = () => {
               py-2 
               rounded-md 
               hover:shadow-lg`}
-            >
-              Submit New Demo Item
-            </button>
+              >
+                Submit New Demo Item
+              </button>
+            )}
           </div>
         </form>
       </div>
