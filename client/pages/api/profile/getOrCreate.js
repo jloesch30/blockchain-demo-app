@@ -26,10 +26,16 @@ export default async function handler(req, res) {
       };
 
       const snap = await db.collection("profile").add(profileData);
-      res.status(200).json({ message: "user was added successfully" });
+      res
+        .status(200)
+        .json({ message: "user was added successfully", users: 0 });
       return;
     }
-    res.status(200).json({ message: "User exists, returning" });
+    res.status(200).json({
+      message: "User exists, returning",
+      users: profileSnap.data().users,
+    });
+    return;
   } catch (err) {
     console.log("there was an error:", err);
     res.status(500).json({ message: "there was a problem in the server" });

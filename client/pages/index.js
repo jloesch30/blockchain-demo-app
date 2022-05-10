@@ -11,7 +11,6 @@ export default function Index() {
   const { web3, address } = useWeb3(); // initialize web3 and make sure it is running
   const { data: session } = useSession();
   const router = useRouter();
-  const [loading, setLoading] = useState();
 
   const loginOrRedirect = async () => {
     if (!address) {
@@ -20,7 +19,6 @@ export default function Index() {
     }
 
     if (session) {
-      setLoading(true);
       await axios
         .get("/api/profile/getOrCreate")
         .then((res) => {
@@ -29,7 +27,6 @@ export default function Index() {
         .catch((err) => {
           console.log(err);
         });
-      setLoading(false);
       router.push("/demo");
       return;
     }

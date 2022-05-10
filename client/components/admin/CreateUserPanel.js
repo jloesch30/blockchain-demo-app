@@ -32,7 +32,6 @@ const CreateUserPanel = () => {
 
     // submit the form data to the route
     setLoading(true);
-    console.log(loading);
     await axios
       .post("/api/user/create", formData, config)
       .then((res) => {

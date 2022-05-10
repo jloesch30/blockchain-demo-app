@@ -1,19 +1,40 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Nav from "../components/nav/Nav";
 import DemoCards from "../components/demo/DemoCards";
 import db from "../utils/db";
 import AuthContext from "../store/auth-context";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 const Demo = ({ users }) => {
   const [renderPageValue, setRenderPageValue] = useState(0);
+  // TODO: implement this
+  const [userCount, setUserCount] = useState(-1);
+  const [canCreateUser, setCanCreateUser] = useState(false);
   const router = useRouter();
   const ctx = useContext(AuthContext);
   const adminClickHandler = (e) => {
     e.preventDefault();
     router.push("/admin");
   };
+
+  useEffect(() => {
+    const getOrCreateProfile = async () => {
+      await axios
+        .get("/api/profile/getOrCreate")
+        .then((res) => {
+          console.log(res.message);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getOrCreateProfile();
+  }, []);
+
+  useEffect(() => {}, [userCount]);
+
   return (
     <>
       <Nav
