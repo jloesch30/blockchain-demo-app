@@ -117,7 +117,8 @@ const User = ({ data }) => {
           <Image src={validateLogo} width={20} height={20}></Image>
           <p className="italic text-xs md:text-base">
             Items with this logo are stored on chain and validated by a Rinkeby
-            smart contract
+            smart contract; To validate an item, please send{" "}
+            <span className="font-bold">0.0012 ETH</span>.
           </p>
         </div>
       </div>

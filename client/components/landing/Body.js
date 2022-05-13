@@ -71,6 +71,17 @@ const Body = ({ linkOutOfHome }) => {
             users and their associated non-verified information such as name,
             bio, etc.
           </p>
+          <h2 className="text-2xl font-mono font-bold text-primaryFont mt-8">
+            Why do we request that you login to Github?
+          </h2>
+          <p className="max-w-3xl">
+            <br />
+            Due to this application being a demo, we use Github to track the
+            amount of users submitted to our smart contract as to correctly show
+            the flow of interaction. Github is used only to store off-chain
+            information such as non-verified skills and resume items, as well as
+            the total number of created users.
+          </p>
         </div>
         <div className="flex justify-center items-center my-5 md:my-10 text-2xl font-bold text-primaryFont font-mono">
           <p>Technologies Involved</p>
