@@ -5,6 +5,7 @@
 import db from "../../../utils/db";
 import { checkAuth } from "../../../utils/session";
 import multiparty from "multiparty";
+import { getSession } from "next-auth/react";
 
 export default async function handler(req, res) {
   if (!(await checkAuth(req))) {
@@ -12,6 +13,8 @@ export default async function handler(req, res) {
     return;
   }
 
+  const session = await getSession({ req });
+  const email = session.user?.email;
   const form = new multiparty.Form();
 
   form.parse(req, async (err, fields, files) => {
@@ -60,6 +63,24 @@ export default async function handler(req, res) {
             });
         });
       }
+
+      // increase the userCount for the profile
+      console.log("increasing user count");
+      const profileRef = db.collection("profile");
+      console.log(email);
+      const profileSnap = await profileRef.where("email", "==", email).get();
+      console.log(profileSnap);
+      const profiles = [];
+      profileSnap.forEach((value) => {
+        profiles.push([value.id, value.data().users]);
+      });
+
+      console.log(profiles[0]);
+
+      const individualProfile = db.collection("profile").doc(profiles[0][0]);
+      const profileRes = await individualProfile.update({
+        users: profiles[0][1] + 1,
+      });
 
       res.json({ id: id });
       res.status(200).end();

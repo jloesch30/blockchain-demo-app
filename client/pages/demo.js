@@ -6,34 +6,17 @@ import AuthContext from "../store/auth-context";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import axios from "axios";
+import useUserCount from "../hooks/useUserCount";
 
 const Demo = ({ users }) => {
   const [renderPageValue, setRenderPageValue] = useState(0);
-  // TODO: implement this
-  const [userCount, setUserCount] = useState(-1);
-  const [canCreateUser, setCanCreateUser] = useState(false);
+  const { userCount } = useUserCount();
   const router = useRouter();
   const ctx = useContext(AuthContext);
   const adminClickHandler = (e) => {
     e.preventDefault();
     router.push("/admin");
   };
-
-  useEffect(() => {
-    const getOrCreateProfile = async () => {
-      await axios
-        .get("/api/profile/getOrCreate")
-        .then((res) => {
-          console.log(res.message);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getOrCreateProfile();
-  }, []);
-
-  useEffect(() => {}, [userCount]);
 
   return (
     <>
@@ -52,14 +35,18 @@ const Demo = ({ users }) => {
         </div>
       )}
       <div className="grid grid-cols-1 place-items-center">
-        <Button
-          sx={{ zIndex: 0, marginBottom: 12 }}
-          variant="contained"
-          className="bg-blue-300"
-          onClick={adminClickHandler}
-        >
-          Create your user
-        </Button>
+        {userCount < 1 ? (
+          <Button
+            sx={{ zIndex: 0, marginBottom: 12 }}
+            variant="contained"
+            className="bg-blue-300"
+            onClick={adminClickHandler}
+          >
+            Create your user
+          </Button>
+        ) : (
+          <div className="mb-20"></div>
+        )}
       </div>
     </>
   );

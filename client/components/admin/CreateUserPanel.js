@@ -4,17 +4,27 @@ import UserLineItemInput from "./UserLineItemInput";
 import axios from "axios";
 import useWeb3 from "../../hooks/useWeb3";
 import Loading from "../../components/loading/Loading";
+import useUserCount from "../../hooks/useUserCount";
 
 const CreateUserPanel = () => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
   const [numberOfLineItems, setNumberOfLineItems] = useState(0);
   const { web3, address } = useWeb3();
+  const { userCount } = useUserCount();
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [loading, setLoading] = useState(false);
 
   const createNewUser = async (event) => {
     event.preventDefault();
+
+    console.log(userCount);
+
+    if (userCount === null || userCount >= 1) {
+      alert("Error, you can not have more than one user!");
+      return;
+    }
+
     const formData = new FormData(event.target);
     for (let [key, val] of formData.entries()) {
       console.log(key, val);

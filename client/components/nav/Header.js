@@ -6,7 +6,7 @@ const Header = () => {
     router.push("/");
   };
   return (
-    <div className="fixed top-0 w-full bg-primaryFont py-5 shadow-lg">
+    <div className="fixed top-0 w-full bg-primaryFont py-5 shadow-lg z-10">
       <div className="flex flex-row justify-center items-center">
         <h1
           onClick={redirectToLanding}

@@ -31,9 +31,16 @@ export default async function handler(req, res) {
         .json({ message: "user was added successfully", users: 0 });
       return;
     }
+
+    // profile is not empty
+    const data = [];
+    profileSnap.forEach((val) => {
+      data.push(val.data());
+    });
+
     res.status(200).json({
       message: "User exists, returning",
-      users: profileSnap.data().users,
+      users: data[0].users,
     });
     return;
   } catch (err) {
