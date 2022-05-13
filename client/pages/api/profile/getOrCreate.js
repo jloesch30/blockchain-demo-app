@@ -10,8 +10,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log("inside try block");
-    console.log(session.user.email);
     const profileRef = db.collection("profile");
     const profileSnap = await profileRef
       .where("email", "==", session.user.email)

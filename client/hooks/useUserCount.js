@@ -6,7 +6,6 @@ const useUserCount = () => {
 
   useEffect(() => {
     const getOrCreateProfile = async () => {
-      console.log("Getting user information");
       await axios
         .get("/api/profile/getOrCreate")
         .then((res) => {

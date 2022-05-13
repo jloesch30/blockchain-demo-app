@@ -5,8 +5,6 @@ import { getFirestore } from "firebase/firestore";
 
 require("dotenv").config();
 
-console.log("starting firebase");
-
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "blockchain-verify-demo.firebaseapp.com",

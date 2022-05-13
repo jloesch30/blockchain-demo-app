@@ -28,7 +28,6 @@ export default async function handler(req, res) {
     const data = Object.fromEntries(filteredData);
 
     try {
-      console.log("inside of try block");
       const { id } = await db.collection("users").add({
         address: data.address[0],
         name: data.name[0],
@@ -65,17 +64,12 @@ export default async function handler(req, res) {
       }
 
       // increase the userCount for the profile
-      console.log("increasing user count");
       const profileRef = db.collection("profile");
-      console.log(email);
       const profileSnap = await profileRef.where("email", "==", email).get();
-      console.log(profileSnap);
       const profiles = [];
       profileSnap.forEach((value) => {
         profiles.push([value.id, value.data().users]);
       });
-
-      console.log(profiles[0]);
 
       const individualProfile = db.collection("profile").doc(profiles[0][0]);
       const profileRes = await individualProfile.update({

@@ -18,18 +18,12 @@ const CreateUserPanel = () => {
   const createNewUser = async (event) => {
     event.preventDefault();
 
-    console.log(userCount);
-
     if (userCount === null || userCount >= 1) {
       alert("Error, you can not have more than one user!");
       return;
     }
 
     const formData = new FormData(event.target);
-    for (let [key, val] of formData.entries()) {
-      console.log(key, val);
-    }
-
     const config = {
       headers: { "content-type": "multipart/form-data" },
       onUploadProgress: (event) => {
