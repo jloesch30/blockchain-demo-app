@@ -24,7 +24,7 @@ const ContractCode = () => {
           </h1>
           <div className="flex justify-center items-center">
             <Link
-              href="https://github.com/jloesch30/blockchain-demo-app"
+              href="https://github.com/jloesch30/blockchain-demo-app/blob/main/client/blockchain/contracts/VerifiedV3.sol"
               sx={{ marginTop: 2, fontSize: 20 }}
             >
               Git Hub
