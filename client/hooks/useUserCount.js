@@ -18,8 +18,10 @@ const useUserCount = () => {
     };
     getOrCreateProfile();
   }, []);
+
   return {
     userCount,
+    setUserCount,
   };
 };
 

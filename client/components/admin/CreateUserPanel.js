@@ -10,7 +10,7 @@ const CreateUserPanel = () => {
   const [renderPageValue, setRenderPageValue] = useState(-1);
   const [numberOfLineItems, setNumberOfLineItems] = useState(0);
   const { web3, address } = useWeb3();
-  const { userCount } = useUserCount();
+  const { userCount, setUserCount } = useUserCount();
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [loading, setLoading] = useState(false);
@@ -52,6 +52,7 @@ const CreateUserPanel = () => {
       .catch((err) => {
         console.log("There was an error");
       });
+    setUserCount((val) => val + 1);
     setLoading(false);
   };
 
@@ -150,18 +151,10 @@ const CreateUserPanel = () => {
             Add Line Item
           </button>
           <div className="flex justify-center items-center md:justify-end md:items-end">
-            {loading ? (
-              <Loading
-                type={"balls"}
-                color={"#0274B3"}
-                width={100}
-                height={100}
-              />
-            ) : (
-              <button
-                disabled={loading}
-                type="submit"
-                className={`
+            <button
+              disabled={loading}
+              type="submit"
+              className={`
               transition-all
               text-white 
               ${loading ? "bg-slate-600" : "bg-red-500"}
@@ -171,10 +164,9 @@ const CreateUserPanel = () => {
               py-2 
               rounded-md 
               hover:shadow-lg`}
-              >
-                Submit New Demo Item
-              </button>
-            )}
+            >
+              Submit New Demo Item
+            </button>
           </div>
         </form>
       </div>
