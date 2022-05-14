@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import demoLogo from "../../public/assets/demo_logo.png";
+import Modal from "../modal";
 
 const Body = ({ linkOutOfHome }) => {
   return (
