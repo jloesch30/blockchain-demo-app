@@ -38,7 +38,7 @@ const Body = ({ linkOutOfHome }) => {
             conformable in this emerging ecosystem. <br />
             <br />
             The subject matter of this application is to demonstrate the use of
-            credential verification in a distributed manner. In a world were
+            credential verification in a distributed manner. In a world where
             certifications are essential in pursuing careers and other
             opportunities we wanted to create a technology that allows users to
             own their credentials. In doing so, regardless of what system or
